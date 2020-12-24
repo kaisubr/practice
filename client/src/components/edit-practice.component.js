@@ -24,7 +24,7 @@ export default class EditPractice extends Component {
 
     componentDidMount() {
         var url = new URL(window.location.href).hostname;
-        axios.get('http://' + url + ':5000/practices/'+this.props.match.params.id)
+        axios.get('http://' + url + '/practices/'+this.props.match.params.id)
         .then(response => {
             this.setState({
             username: response.data.username,
@@ -37,7 +37,7 @@ export default class EditPractice extends Component {
             console.log(error);
         })
 
-        axios.get('http://' + url + ':5000/users/')
+        axios.get('http://' + url + '/users/')
         .then(response => {
             this.setState({ users: response.data.map(user => user.username) });
         })
@@ -83,7 +83,7 @@ export default class EditPractice extends Component {
         console.log(practice);
 
         var url = new URL(window.location.href).hostname;
-        axios.post('http://' + url + ':5000/practices/update/'+this.props.match.params.id, practice)
+        axios.post('http://' + url + '/practices/update/'+this.props.match.params.id, practice)
         .then(res => {
             console.log(res.data)
             window.location = '/';

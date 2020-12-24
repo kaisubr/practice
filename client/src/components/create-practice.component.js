@@ -22,7 +22,7 @@ export default class CreatePractice extends Component {
     componentDidMount() {
         // server is at port 5000 on same hostname
         var url = new URL(window.location.href).hostname; // eg "192.168.1.181"
-        axios.get('http://' + url + ':5000/users/')
+        axios.get('http://' + url + '/users/') // url:5000/
             .then(response => {
                 if (response.data.length > 0) {
                 this.setState({ 
@@ -136,7 +136,7 @@ export default class CreatePractice extends Component {
         
         // server is at port 5000 on same hostname
         var url = new URL(window.location.href).hostname; // eg "192.168.1.181"
-        axios.post('http://' + url + ':5000/practices/add', practice)
+        axios.post('http://' + url + '/practices/add', practice)
             .then(res => {
                 console.log(res.data)
                 window.location = '/';

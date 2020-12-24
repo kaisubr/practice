@@ -25,7 +25,7 @@ export default class PracticesList extends Component {
     componentDidMount() {
         // server is at port 5000 on same hostname
         var url = new URL(window.location.href).hostname;
-        axios.get('http://' + url + ':5000/practices/')
+        axios.get('http://' + url + '/practices/')
         .then(response => {
             this.setState({ practices: response.data });
         })
@@ -37,7 +37,7 @@ export default class PracticesList extends Component {
     deletePractice(id) {
         // server is at port 5000 on same hostname
         var url = new URL(window.location.href).hostname;
-        axios.delete('http://' + url + ':5000/practices/'+id)
+        axios.delete('http://' + url + '/practices/'+id)
             .then(res => console.log(res.data));
         this.setState({
             practices: this.state.practices.filter(el => el._id !== id)

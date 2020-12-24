@@ -156,7 +156,7 @@ export default class CreatePractice extends Component {
                     duration: 0,
                     date: new Date(),
                     success: 'Added entry',
-                    visibility: 'hide'
+                    visibility: 'show'
                 });
                 
 //                 window.location = '/';

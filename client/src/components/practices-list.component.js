@@ -5,7 +5,7 @@ import axios from 'axios';
 const Practice = props => (
   <tr>
     <td>{props.practice.username}</td>
-    <td>{props.practice.description}</td>
+    <td>{props.practice.description.substring(0,15)}</td>
     <td>{props.practice.duration}</td>
     <td>{props.practice.date.substring(0,10)}</td>
     <td>

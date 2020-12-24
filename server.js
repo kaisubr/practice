@@ -1,4 +1,5 @@
 const express = require('express');
+const path = require('path');
 const cors = require('cors');
 const mongoose = require('mongoose');
 
@@ -26,6 +27,12 @@ const usersRouter = require('./routes/users');
 // the server is at 192.168.1.180:5000
 app.use('/practices', practicesRouter);
 app.use('/users', usersRouter);
+
+// Serve static files from the React app
+app.use(express.static(path.join(__dirname, 'client/build')));
+app.get('/*', (req, res) => {
+  res.sendFile(path.join(__dirname+'/client/build/index.html'));
+});
 
 app.listen(port, () => {
     console.log(`Server is running on port: ${port}`);

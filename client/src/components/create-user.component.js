@@ -48,7 +48,7 @@ export default class CreateUser extends Component {
         
         // server is at port 5000 on same hostname
         var url = new URL(window.location.href).hostname; // eg "192.168.1.181"
-        axios.post('http://' + url + '/users/add', newUser)
+        axios.post('https://' + url + '/users/add', newUser)
             .then(res => console.log(res.data));
         
         this.setState({

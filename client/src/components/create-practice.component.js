@@ -67,12 +67,22 @@ export default class CreatePractice extends Component {
                     </select>
                 </div>
                 <div className="form-group"> 
-                    <label>Description: </label>
-                    <input  type="text"
+                    <label for="textareadescription1">Description: </label>
+                    <textarea
+                        rows="5"
                         required
+                        placeholder="A brief description of the session"
                         className="form-control"
+                        id="textareadescription1"
                         value={this.state.description}
                         onChange={this.onChangeDescription}
+                        > </textarea>
+                </div>
+                <div className="form-group"> 
+                    <label>Associated materials: </label>
+                    <input  type="text"
+                        placeholder="The name of a piece, or a useful link"
+                        className="form-control"
                         />
                 </div>
                 <div className="form-group">

@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import Dropdown from 'react-bootstrap/Dropdown';
+import DropdownButton from 'react-bootstrap/DropdownButton'
+import Table from 'react-bootstrap/Table'
 
 const Practice = props => (
   <tr>
@@ -8,18 +11,29 @@ const Practice = props => (
     <td>{props.practice.description.substring(0,15)}</td>
     <td>{props.practice.duration}</td>
     <td>{props.practice.date.substring(0,10)}</td>
+
     <td>
-      <Link to={"/edit/"+props.practice._id}>edit</Link> | <a href="#delete" onClick={() => { props.deletePractice(props.practice._id) }}>delete</a>
+        <DropdownButton id="dropdown-basic-button" title="Settings" size="sm" variant="secondary">
+            <Dropdown.Item href="#/view/" size="sm">View lesson materials</Dropdown.Item>
+            <Dropdown.Item href={"edit/"+props.practice._id} size="sm">Edit entry</Dropdown.Item>
+            <Dropdown.Divider />
+            <Dropdown.Item href="#/delete/" onClick={() => { props.deletePractice(props.practice._id) }} variant="danger" size="sm">Delete</Dropdown.Item>
+        </DropdownButton>
     </td>
   </tr>
 )
 
+//     <td>
+//         <Link to={"/edit/"+props.practice._id}>edit</Link> | <a href="#delete" onClick={() => { props.deletePractice(props.practice._id) }}>delete</a>
+//     </td>
 
 export default class PracticesList extends Component {
     constructor(props) {
         super(props);
         this.deletePractice = this.deletePractice.bind(this);
-        this.state = {practices: []};
+        this.state = {
+            practices: [{_id: "unknown_id", username: "kai", description: "asdf", duration: 10, date: ""},{_id: "unknown_id", username: "kai", description: "asdf", duration: 10, date: ""},{_id: "unknown_id", username: "kai", description: "asdf", duration: 10, date: ""},{_id: "unknown_id", username: "kai", description: "asdf", duration: 10, date: ""},{_id: "unknown_id", username: "kai", description: "asdf", duration: 10, date: ""}],
+        };
     }
     
     componentDidMount() {
@@ -48,7 +62,7 @@ export default class PracticesList extends Component {
         return (
             <div>
                 <h3>Logged Practices</h3>
-                <table className="table">
+                <Table striped bordered hover responsive>
                     <thead className="thead-light">
                     <tr>
                         <th>Username</th>
@@ -61,7 +75,7 @@ export default class PracticesList extends Component {
                     <tbody>
                     { this.practiceList() }
                     </tbody>
-                </table>
+                </Table>
             </div>
 
         )

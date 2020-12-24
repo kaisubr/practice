@@ -31,8 +31,9 @@ export default class PracticesList extends Component {
     constructor(props) {
         super(props);
         this.deletePractice = this.deletePractice.bind(this);
+        // practices: [{_id: "unknown_id", username: "kai", description: "asdf", duration: 10, date: ""}],
         this.state = {
-            practices: [{_id: "unknown_id", username: "kai", description: "asdf", duration: 10, date: ""},{_id: "unknown_id", username: "kai", description: "asdf", duration: 10, date: ""},{_id: "unknown_id", username: "kai", description: "asdf", duration: 10, date: ""},{_id: "unknown_id", username: "kai", description: "asdf", duration: 10, date: ""},{_id: "unknown_id", username: "kai", description: "asdf", duration: 10, date: ""}],
+            practices: [],
         };
     }
     
@@ -61,7 +62,7 @@ export default class PracticesList extends Component {
     render() {
         return (
             <div>
-                <h3>Logged Practices</h3>
+                <h3>Recent Practice Sessions</h3>
                 <Table striped bordered hover responsive>
                     <thead className="thead-light">
                     <tr>

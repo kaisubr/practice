@@ -17,7 +17,7 @@
   },
   "scripts": {
     "start": "echo 'starting...' && sleep 5 && react-scripts start",
-    "build": "echo 'build frontend, 1/2...' && ls && nohup react-scripts build & cd backend && echo 'start backend, 2/2...' && ls && npm install && nohup node server.js & echo 'done' & :",
+    "build": "(echo 'build frontend, 1/2...' && ls && nohup react-scripts build &) & (cd backend && echo 'start backend, 2/2...' && ls && npm install && nohup node server.js &) & (sleep 15 && echo 'done')",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

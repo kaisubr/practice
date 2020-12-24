@@ -8,11 +8,19 @@ In the project directory, you can run:
 
 ### `npm start`
 
-Runs the app in the development mode.\
+(1/2) Runs the server app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
+
+* -- Alternatively, run `nodemon server` (install `npm install -g nodemon` if needed).
+
+(2/2) Next, start the client.
+
+* -- `cd client` then `npm install` dependencies, and `npm start` to run the client in development mode.
+
+* On the network: make sure you make a new bridged adapter, and use `ifconfig` to get the IP address, rather than using localhost
 
 ### `npm test`
 

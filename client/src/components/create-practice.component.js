@@ -6,11 +6,13 @@ export default class CreatePractice extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            username: '',
+            username: 'anonymous',
             description: '',
             duration: 0,
             date: new Date(),
-            users: []
+            users: ['anonymous'],
+            success: '',
+            visibility: 'hide'
         }
         this.onChangeUsername = this.onChangeUsername.bind(this);
         this.onChangeDescription = this.onChangeDescription.bind(this);
@@ -74,7 +76,7 @@ export default class CreatePractice extends Component {
                         />
                 </div>
                 <div className="form-group">
-                    <label>Duration (in minutes): </label>
+                    <label>Duration (hours): </label>
                     <input 
                         type="text" 
                         className="form-control"
@@ -95,6 +97,15 @@ export default class CreatePractice extends Component {
                 <div className="form-group">
                     <input type="submit" value="Create Practice Log" className="btn btn-primary" />
                 </div>
+                
+                <div class={"alert alert-warning alert-dismissible fade " + this.state.visibility} role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <strong>{this.state.success}</strong> for {this.state.username}.
+                </div>
+                
+                <p></p>
                 </form>
             </div>
         )
@@ -138,9 +149,25 @@ export default class CreatePractice extends Component {
         var url = new URL(window.location.href).hostname; // eg "192.168.1.181"
         axios.post('https://' + url + '/practices/add', practice)
             .then(res => {
-                console.log(res.data)
-                window.location = '/';
+                console.log(res.data);
+                
+                this.setState({
+                    description: '',
+                    duration: 0,
+                    date: new Date(),
+                    success: 'Added entry',
+                    visibility: 'hide'
+                });
+                
+//                 window.location = '/';
             });
+        
+        setTimeout(() => {
+            this.setState({
+                success: '',
+                visibility: 'hide'
+            })
+        }, 2000);
     }
 
 }

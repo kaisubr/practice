@@ -17,7 +17,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "cd backend && echo 'start backend, 1/2...' && ls && npm install && node server.js && cd .. && echo 'build frontend, 2/2...' && ls && react-scripts build",
+    "build": "cd backend && echo 'start backend, 1/2...' && ls && npm install && node server.js & sleep 5 && cd .. && echo 'build frontend, 2/2...' && ls && react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

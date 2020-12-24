@@ -16,8 +16,8 @@
     "web-vitals": "^0.2.4"
   },
   "scripts": {
-    "start": "echo 'starting...' && sleep 5 && react-scripts start",
-    "build": "(echo 'build frontend, 1/2...' && ls && react-scripts build && cd backend && echo 'start backend, 2/2...' && ls && npm install && nohup node server.js &",
+    "start": "echo 'starting...' && sleep 5 && react-scripts start & sleep 5 && cd backend && nohup node server.js &",
+    "build": "(echo 'build frontend, 1/2...' && ls && react-scripts build && cd backend && echo 'start backend, 2/2...' && ls && npm install",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
